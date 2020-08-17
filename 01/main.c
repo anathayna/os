@@ -1,50 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
-typedef struct stringList {
-  char string;
-  struct stringList *next;
-}sList;
+typedef struct list {
+  int size;
+  char *data;
+  struct No *next;
+  struct No *head;
+}List;
 
-typedef struct nameList {
-  sList *start;
-  sList *end;
-}nList;
-
-void init(nList *p){
-  p->start = NULL;
-  p->end = NULL;  
+void init() {
+  List* l = (List*)malloc(sizeof(List));
+  char names[64];
+  l->size = -1;
+  l->data = names;
 }
 
-void insert(nList *p){
-  sList *no;
-  no = malloc (sizeof (char));
-  scanf("%c",&no->string);
-  no->next = NULL;
+void push(List* l) {
+  List* no = (List*)malloc(sizeof(List));
+  no->data = l->data;
+  no->next = l->head;
+  l->head = no;
+  l->size++;
+}
 
-  if (p->start == NULL){
-    p->start = no;
-    p->end = no;  
-  } else {
-    p->end->next = no;
-    p->end = no; 
+void print(List* l) {
+  List* p = l->head;
+  while(p!=NULL) {
+    printf("%d", p->data);
+    p = p->next;
   }
+  printf("\n");
 }
 
-void reverseList(sList *e, sList *ant){
-  if(e->next != NULL)
-    reverseList(e->next, e);
-  e->next = ant;
-}
-
-void reverse(nList *p){
-  reverseList(p->start, NULL);
-
-  sList *aux = p->start;
-  p->start = p->end;    
-  p->end = aux;
-}
+void reverse(nList *l);
 
 int main(void) {
   return 0;
