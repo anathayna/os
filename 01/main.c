@@ -16,12 +16,19 @@ void init() {
   l->data = names;
 }
 
-void push(List* l) {
+void push(List* l, char *data) {
   List* no = (List*)malloc(sizeof(List));
-  no->data = l->data;
+  no->data = data;
   no->next = l->head;
   l->head = no;
   l->size++;
+}
+
+void pop(List* l) {
+  List* p = l->head;
+  l->head = p->next;
+  free(p);
+  l->size--;
 }
 
 void print(List* l) {
@@ -33,8 +40,9 @@ void print(List* l) {
   printf("\n");
 }
 
-void reverse(nList *l);
+void reverse(List *l);
 
 int main(void) {
+  init();
   return 0;
 }
