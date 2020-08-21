@@ -2,47 +2,63 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct list {
-  int size;
+typedef struct no {
   char *data;
-  struct No *next;
-  struct No *head;
-}List;
+  struct no *prox;
+} No;
 
-void init() {
-  List* l = (List*)malloc(sizeof(List));
-  char names[64];
-  l->size = -1;
-  l->data = names;
+No* init() {
+  return NULL;
 }
 
-void push(List* l, char *data) {
-  List* no = (List*)malloc(sizeof(List));
-  no->data = data;
-  no->next = l->head;
-  l->head = no;
-  l->size++;
+void insert(No *i, char *j) {
+  No *no = (No*)malloc(sizeof(No));
+  no->data = j;
+  no->prox = i->prox;
+  i->prox = no;
 }
 
-void pop(List* l) {
-  List* p = l->head;
-  l->head = p->next;
-  free(p);
-  l->size--;
-}
-
-void print(List* l) {
-  List* p = l->head;
-  while(p!=NULL) {
-    printf("%d", p->data);
-    p = p->next;
+void print(No *n) {
+  for(No* aux=n; aux!=NULL; aux=aux->prox) {
+    printf("%s\n", n->data);
+    free(n);
   }
   printf("\n");
 }
 
-void reverse(List *l);
+No* reverse(No* l) {
+  No* ant = NULL;
+  No* aux = l;
+  No* prox = NULL;
+  
+  while(aux != NULL) {
+    prox = aux->prox;
+    aux->prox = ant;
+    ant = aux;
+    aux = prox;
+  }
+  return ant;
+}
 
 int main(void) {
-  init();
+  No *l = (No*)malloc(sizeof(No));
+  l = init();
+
+  printf("digite alguns nomes: (p/ finalizar digite 'fim')\n");
+
+  while(1) {
+    char *n = (No*)malloc(sizeof(No));
+    scanf("%s\n", n);
+
+    if(strcmp(n,"fim") == 0) {
+      printf("inverso:\n");
+      reverse(l);
+      print(l);
+      break;
+    } else {
+      insert(l, n);
+    }
+    free(n);
+  }
   return 0;
 }
