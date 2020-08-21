@@ -47,7 +47,7 @@ int main(void) {
 
   while(1) {
     char *n = (No*)malloc(sizeof(No));
-    scanf("%s", n);
+    scanf("%s\n", n);
 
     if(strcmp(n,"fim") == 0) {
       printf("inverso:\n");
