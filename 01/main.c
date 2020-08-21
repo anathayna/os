@@ -21,7 +21,6 @@ void insert(No *i, char *j) {
 void print(No *n) {
   for(No* aux=n; aux!=NULL; aux=aux->prox) {
     printf("%s\n", n->data);
-    free(n);
   }
   printf("\n");
 }
@@ -48,7 +47,7 @@ int main(void) {
 
   while(1) {
     char *n = (No*)malloc(sizeof(No));
-    scanf("%s\n", n);
+    scanf("%s", n);
 
     if(strcmp(n,"fim") == 0) {
       printf("inverso:\n");
