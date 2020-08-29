@@ -1,5 +1,9 @@
+#include <sys/utsname.h>
 #include <stdio.h>
 
+int uname(struct utsname *buf);
+
 int main(void) {
-  printf("hellou\n");
+  printf("Hello World\n");
+  return 0;
 }
