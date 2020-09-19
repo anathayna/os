@@ -32,3 +32,6 @@ void pai(long pid) {
   printf("PAI:\tFinalizando\n");
   exit(EXIT_SUCCESS);
 }
+
+//gcc 1.c
+//./a.out
