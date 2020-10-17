@@ -1,6 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+//protótipo
+void func(void);
 
 int main(void) {
-  printf("hellou!\n");
-  return 1;
+    func();
+    exit(EXIT_SUCCESS);
+}
+
+void func(void){
+    printf("trace func");
 }
