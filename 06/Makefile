@@ -1,10 +1,9 @@
 
 mr: main.c
-	gcc mr.c -Wall -Wextra -pendatic -std=c11 -o mr
+  gcc main.c -Wall -Wextra -pendatic -std=c11 -o mr
 
 run:
-	@valgrind ./mr
+  @valgrind ./mr
 
 clean:
-	@rm -f mr
-
+  @rm -f mr
