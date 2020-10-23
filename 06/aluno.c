@@ -36,5 +36,7 @@ char *aluno_nome(aluno_t aluno) {
 }
 
 void liberar_aluno(aluno_t aluno) {
+    if(!aluno) { return; }
+    if(!aluno->nome) { free(aluno->nome); }
     free(aluno);
 }
