@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "aluno.h"
 #include "mr.h"
 #define NR_ITENS 2
@@ -14,11 +15,32 @@ int main(int argc, char *argv[]) {
     alunos[0] = a1;
     alunos[1] = a2;
 
+    int **resultados = (int **) map((void **) alunos, obter_tamanho_nome, NR_ITENS);
+
     printf("id: %2d | nome %-50s", aluno_id(a1), aluno_nome(a1), aluno_nome(a1) == NULL ? "" : aluno_nome(a1));
     printf("id: %2d | nome %-50s", aluno_id(a2), aluno_nome(a2), aluno_nome(a2) == NULL ? "" : aluno_nome(a2));
 
-    liberar_aluno(a1); a1 = NULL;
-    liberar_aluno(a2); a2 = NULL;
+    for(int i=0; i<NR_ITENS; i++) {
+        printf("id: %2d | nome %-50s | tamanho: %2d", aluno_id(alunos[1]), aluno_nome(alunos[i]) == NULL ? "" : aluno_nome(alunos[i]), *resultados[i]);
+    }
+
+    for(int i=0; i<NR_ITENS; i++) {
+        liberar_aluno(alunos[i]);
+        alunos[i] = NULL;
+    }
+
+    free(alunos);
+    alunos = NULL;
+
+    for(int i=0; i<NR_ITENS; i++) {
+        liberar_aluno(resultados[i]);
+        resultados[i] = NULL;
+    }
+
+    free(resultados);
+
+    //liberar_aluno(a1); a1 = NULL;
+    //liberar_aluno(a2); a2 = NULL;
 
     exit(EXIT_SUCCESS);
 }
