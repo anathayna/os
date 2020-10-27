@@ -1,21 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <pthread.h>
 
-void *criar(void);
+void *imprimir_msg(void *msg);
 
 int main(void) {
-    char *b;
-    for(int i=0; i<10; i++) {
-        b = criar();
-        puts(b);
-        free(b);
-    }
+    pthread_t th1;
+    pthread_create(&th1, NULL, imprimir_msg, NULL);
+    sleep(1);
+    exit(EXIT_SUCCESS);
 }
 
-void *criar(void) {
-    char *buf;
-    buf = (char *) malloc(80);
-    strcpy(buf, "ana thayna");
-    return buf;
+void *imprimir_msg(void *msg) {
+    printf("estou na função %s\n", __FUNCTION__);
+    return NULL;
 }

@@ -1,4 +1,6 @@
 [assembly] gcc main.c -Wall -Wextra -std=c17 -pedantic -S -masm=intel 
 [exec] gcc main.c -Wall -Wextra -std=c17 -pedantic -E
 [binari] gcc main.c -Wall -Wextra -std=c17 -pedantic -o main
+[pthread] gcc main.c -Wall -Wextra -std=c17 -pthread -o main
+[unused] gcc main.c -Wall -Wextra -std=c17 -Wno-unused-parameter -pthread -o main
 [string] strings main
