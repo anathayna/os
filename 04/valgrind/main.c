@@ -14,13 +14,16 @@ int main(void) {
     for(int i=0; i<N_THREADS; i++) {
         pthread_create(&th[i], NULL, imprimir_msg, NULL);
     }
+
+    for(int i=0; i<N_THREADS; i++) {
+        pthread_join(&th[i], NULL);
+    }
     
-    sleep(1);
+    //spleep(1);
     exit(EXIT_SUCCESS);
 }
 
 void *imprimir_msg(void *msg) {
     printf("estou na função %s\n", __FUNCTION__);
-    sleep(1);
     return NULL;
 }
