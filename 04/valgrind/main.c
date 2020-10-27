@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-void mudar(char *);
+void *criar(void);
 
 int main(void) {
-    char buf[80];
-    strcpy(buf, "  ana thayna");
-    mudar(buf);
-    puts(buf);
+    char *b;
+    b = criar();
+    puts(b);
 }
 
-void mudar(char *s) {
-    if(s != NULL) { 
-        s[0] = '#';
-    }
+void *criar(void) {
+    char *buf;
+    buf = (char *) malloc(80);
+    strcpy(buf, "ana thayna");
+    return buf;
 }
