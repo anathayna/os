@@ -13,6 +13,10 @@ int main(void) {
 
 void func(void) {
     trace(__FUNCTION__);
+
+    char *buf;
+    buf = "ana thayna";
+    puts(buf);
 }
 
 void trace(const char *f){
