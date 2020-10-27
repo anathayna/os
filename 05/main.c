@@ -15,38 +15,39 @@ int main(int argc, char *argv[]) {
 
 void *alfa(void *fn) {
   const char *fname = (char *) fn;
-  FILE *f;
+  FILE *file;
 
-  f = fopen(fname, "r");
-  if (f != NULL) {
-    int fsize = sizeof(f);
-    char *mem = malloc(fsize);
-    int word = 0;
+  int word = 0;
+  int fsize = sizeof(file);
+  char *mem = malloc(fsize);
 
-    while (fscanf(f, "%s", mem) == 1) {
-      word++;
-    }
-    free(mem);
+  file = fopen(fname, "r");
 
-    printf("%s: %d words\n", fname, word);
-  } else {
-    printf("file %s not found.\n", fname);
+  if(file == NULL) {
+    printf("file %s not found", fname);
+    exit(EXIT_FAILURE);
   }
 
-  fclose(f);
-  return NULL;
-}
+  while (fscanf(file, "%s", mem) == 1) {
+    word++;
+  }
+  free(mem);
 
+  printf("%s: %d words\n", fname, word);
+
+  fclose(file);
+  return 0;
+}
 
 void count(int fcount, char *fname[]) {
   int nthreads = fcount;
   pthread_t t[nthreads]; 
 
-  for (int i = 1; i <= fcount; i++) {
-    pthread_create(&t[i - 1], NULL, alfa, fname[i]);
+  for (int i=1; i <= fcount; i++) {
+    pthread_create(&t[i-1], NULL, alfa, fname[i]);
   }
 
-  for(int i = 0; i < nthreads; i++) {
+  for(int i=0; i<nthreads; i++) {
     pthread_join(t[i], NULL);
   }
 }
