@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //protótipo
 void trace(const char *);
@@ -14,8 +15,8 @@ int main(void) {
 void func(void) {
     trace(__FUNCTION__);
 
-    char *buf;
-    buf = "ana thayna";
+    char *buf = "ana thayna";
+    buf[0] = 'a';
     puts(buf);
 }
 

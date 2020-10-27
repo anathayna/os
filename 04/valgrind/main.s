@@ -56,6 +56,8 @@ _func:                                  ## @func
 	call	_trace
 	lea	rax, [rip + L_.str]
 	mov	qword ptr [rbp - 8], rax
+	mov	rax, qword ptr [rbp - 8]
+	mov	byte ptr [rax], 97
 	mov	rdi, qword ptr [rbp - 8]
 	call	_puts
 	add	rsp, 16
