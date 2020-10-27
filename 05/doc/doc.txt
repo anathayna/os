@@ -1,0 +1,2 @@
+[build] gcc -Wall -Wextra -Wno-unused-parameter -pthread -std=c11 main.c -o main
+[run] ./main file1.txt file2.txt file3.txt
