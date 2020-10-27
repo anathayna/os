@@ -2,24 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-//protótipo
-void trace(const char *);
-void func(void);
+void mudar(char *);
 
 int main(void) {
-    trace(__FUNCTION__);
-    func();
-    exit(EXIT_SUCCESS);
-}
-
-void func(void) {
-    trace(__FUNCTION__);
-
-    char *buf = "ana thayna";
-    buf[0] = 'a';
+    char buf[80];
+    strcpy(buf, "  ana thayna");
+    mudar(buf);
     puts(buf);
 }
 
-void trace(const char *f){
-    printf("estou na função nomeada '%s'\n", f);
+void mudar(char *s) {
+    if(s != NULL) { 
+        s[0] = '#';
+    }
 }
