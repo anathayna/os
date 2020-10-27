@@ -6,8 +6,11 @@ void *criar(void);
 
 int main(void) {
     char *b;
-    b = criar();
-    puts(b);
+    for(int i=0; i<10; i++) {
+        b = criar();
+        puts(b);
+        free(b);
+    }
 }
 
 void *criar(void) {
