@@ -1,18 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void *maloc(int nbytes);
+void *alloc(int nbytes);
 void free(void *p);
 
 int main(void) {
-    int *p = (int *) maloc(4*sizeof(int));
+    int *p = (int *) alloc(4*sizeof(int));
     *p = 100;
+
+    printf("[1] p: %d\n", *p);
+    printf("[1] p: %d\n", p);
+    
     free(p);
 }
 
-void *maloc(int nbytes) {
-    return NULL;
+void *alloc(int nbytes) {
+    void *n = malloc(nbytes);
+    return n;
 }
 
 void free(void *p) {
-    return NULL;
+    if (p != NULL) {
+        free(p);
+    }
 }
