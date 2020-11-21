@@ -22,7 +22,7 @@ int main(void) {
     *p = 100;
 
     printf("[1] p = %d\n", *p);
-    printf("[2] p memory: %d\n", p);
+    printf("[2] p memory: %p\n", p);
     
     free(p);
 }
@@ -45,7 +45,7 @@ void *alloc(size_t nbytes) {
         this = this->next;
     }
 
-    printf("[3] memory: %d\n", this);
+    printf("[3] memory: %p\n", this);
 
     if(this->size > nbytes || this->size == nbytes) {
         this->free = 0;
@@ -67,5 +67,5 @@ void free(void *p) {
     } else {
         exit(EXIT_FAILURE);
     }
-    printf("[4] free: %d\n", free);
+    printf("[4] free: %p\n", free);
 }
