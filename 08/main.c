@@ -8,7 +8,7 @@ struct point {
   struct point *next; 
 };
 
-void *alloc(int nbytes);
+void *alloc(size_t nbytes);
 void free(void *p);
 void init();
 
@@ -27,15 +27,33 @@ int main(void) {
 }
 
 void init() {
-    //m->size = sizeof(memory) - sizeof(struct point);
     m->size = memory - sizeof(struct point);
     m->free = 1;
     m->next = NULL;
 }
 
-void *alloc(int nbytes) {
-    void *n = malloc(nbytes);
-    return n;
+void *alloc(size_t nbytes) {
+    struct point *this, *after;
+    void *resul;
+    this = m;
+
+    //void *n = malloc(nbytes);
+
+    while(this->size < nbytes || (this->free == 0 && this->next != NULL)) { 
+        after = this;
+        this = this->next;
+    }
+
+    if(this->size > nbytes || this->size == nbytes) {
+        this->free = 0;
+        resul = this++; 
+        return resul;
+    } else {
+        resul = NULL;
+        return resul;
+    }
+
+    return NULL;
 }
 
 void free(void *p) {
