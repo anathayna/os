@@ -1,9 +1,9 @@
 [doc] fuse e esteganografia
 [doc] https://www.gta.ufrj.br/ensino/eel878/redes1-2016-1/16_1/esteganografia/
 [doc] https://en.wikipedia.org/wiki/Filesystem_in_Userspace
-[doc] https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/FUSE_structure.svg/280px-FUSE_structure.svg.png
 [doc] https://engineering.facile.it/blog/eng/write-filesystem-fuse/
 [desc] desenvolva um “sistema de arquivos em espaço de usuário” que use um arquivo de mídia (imagem, vídeo, som) como meio de armazenamento através da técnica de esteganografia
-[desc] requisitos: uso de arquivo de mídia (o mais fácil será uma imagem BMP)
+[desc] requisitos: uso de arquivo de mídia (mais fácil será uma imagem BMP)
 [desc] requisitos: uso da biblioteca LIBFUBSE
 [lib] https://github.com/libfuse/libfuse
+[doc+] https://www.ic.unicamp.br/~rocha/pub/papers/Camaleao_um_Software_para_Seguranca_Digital_Utilizando_Esteganografia.pdf
