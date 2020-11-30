@@ -6,4 +6,3 @@
 [desc] requisitos: uso de arquivo de mídia (mais fácil será uma imagem BMP)
 [desc] requisitos: uso da biblioteca LIBFUBSE
 [lib] https://github.com/libfuse/libfuse
-[doc+] https://www.ic.unicamp.br/~rocha/pub/papers/Camaleao_um_Software_para_Seguranca_Digital_Utilizando_Esteganografia.pdf
